@@ -168,7 +168,7 @@ export class FileServerAPI {
    */
   async isAvailable(): Promise<boolean> {
     try {
-      console.log(`🏥 HealthCheck: Checking server at ${this.config.baseUrl}/api/health`);
+      console.log(`🏥 HealthCheck: Checking server at ${this.config.baseUrl}/api/files/health`);
       const response = await this.healthCheck();
       console.log('🏥 HealthCheck: Response received:', response);
       const isOk = response.status === 'ok';
@@ -286,9 +286,12 @@ export class FileServerAPI {
 let fileServerAPI: FileServerAPI | null = null;
 
 export function getFileServerAPI(masterPassword: string): FileServerAPI {
-  const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://files.toolstack.nl' // Your production file server URL
-    : 'http://localhost:3004'; // Development server
+  // Use the same domain as the current app for API calls
+  const baseUrl = typeof window !== 'undefined' 
+    ? window.location.origin // Browser: use current domain
+    : process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` // Vercel: use deployment URL
+      : 'http://localhost:3000'; // Local development
 
   if (!fileServerAPI || fileServerAPI['config'].masterPassword !== masterPassword) {
     fileServerAPI = new FileServerAPI({ baseUrl, masterPassword });
