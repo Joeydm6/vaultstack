@@ -1,0 +1,36 @@
+{
+  "name": "vaultstack",
+  "version": "1.0.0",
+  "description": "Secure password and file manager with encryption",
+  "main": "CODE/app/page.tsx",
+  "scripts": {
+    "dev": "cd CODE && npm run dev",
+    "build": "cd CODE && npm run build",
+    "start": "cd CODE && npm run start",
+    "lint": "cd CODE && npm run lint",
+    "install-deps": "cd CODE && npm install",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "password-manager",
+    "encryption",
+    "file-storage",
+    "security",
+    "vault",
+    "nextjs",
+    "vercel"
+  ],
+  "author": "VaultStack",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vaultstack.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "workspaces": [
+    "CODE"
+  ]
+}
