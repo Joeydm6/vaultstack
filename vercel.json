@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/CODE/"
+    },
+    {
       "src": "/(.*)",
       "dest": "/CODE/$1"
     }
