@@ -297,7 +297,7 @@ export function VaultItemList({
                           addSuffix: true,
                         }).replace(/[{}()]/g, "")}
                       </span>
-                      {(item.fileData || item.filepath) && (
+                      {(item.fileData || item.filepath) && (item.category === 'notes' || item.category === 'files') && (
                         <span className="flex items-center text-[9px] sm:text-[10px] font-normal text-muted-foreground/70">
                           <Paperclip className="w-2.5 h-2.5 sm:w-3 sm:h-3 mr-0.5 sm:mr-1" />
                           <span className="hidden sm:inline">has attachment</span>
